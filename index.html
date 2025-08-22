@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cristian lucas — Portafolio</title>
+  <meta name="description" content="Portafolio de Cristian David Quispe Lucas — Ciberseguridad y Desarrollo Web." />
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Iconos Devicon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <!-- AOS (scroll animations) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+   <link rel="stylesheet" href="estyle.css">
+  <style>
+    :root{
+      --bg:#0a0b0f; /* fondo */
+      --panel:#0f111aee; /* paneles */
+      --primary:#00e5ff; /* cian neon */
+      --accent:#7cff6b; /* verde neon */
+      --purple:#a277ff;
+      --text:#d7e1ef;
+      --muted:#8e9bb8;
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+      --glow:0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 40px var(--primary);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:radial-gradient(1200px 800px at 20% -10%, #0c1220, transparent 60%),
+                 radial-gradient(1000px 900px at 120% 10%, #101a2e, transparent 60%), var(--bg);
+      color:var(--text); font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      overflow-x:hidden;
+    }
+    /* NAV */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:blur(12px);
+      background:linear-gradient(180deg, rgba(10,11,15,.85), rgba(10,11,15,.35));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{max-width:1200px; margin:auto; display:flex; align-items:center; gap:16px; padding:14px 20px}
+    .brand{font-weight:800; letter-spacing:.5px}
+    .brand span{color:var(--primary); text-shadow:var(--glow)}
+    .nav a{color:var(--text); text-decoration:none; opacity:.9; transition:.25s; font-weight:600}
+    .nav a:hover{color:white; text-shadow:0 0 10px var(--accent)}
+    .spacer{flex:1}
+    .cta{
+      padding:10px 16px; border:1px solid rgba(255,255,255,.12); border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+    }
+    /* HERO */
+    .hero{position:relative; min-height:92vh; display:grid; place-items:center; text-align:center; padding:64px 20px}
+    #matrix{position:absolute; inset:0; z-index:-1; opacity:.35}
+    .title{font-size:clamp(36px, 6vw, 72px); line-height:1.05; margin:0}
+    .title .glow{color:var(--primary); text-shadow:var(--glow)}
+    .subtitle{font-size:clamp(16px,2.2vw,22px); color:var(--muted); margin:14px 0 28px}
+    .kpis{display:flex; flex-wrap:wrap; gap:16px; justify-content:center}
+    .kpis .chip{border:1px solid rgba(255,255,255,.12); padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.04)}
+    .logo-cloud{position:absolute; inset:0; pointer-events:none}
+    .floating{position:absolute; font-size:42px; opacity:.35; filter:drop-shadow(0 6px 24px rgba(0,0,0,.6))}
+    .float{animation:float 10s ease-in-out infinite}
+    .spin{animation:spin 16s linear infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* SECTIONS */
+    section{max-width:1200px; margin:0 auto; padding:80px 20px}
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:28px; box-shadow:var(--shadow);
+    }
+    h2{font-size:clamp(24px,4vw,36px); margin:0 0 18px}
+    .lead{color:var(--muted); margin-top:-6px}
+
+    /* ABOUT */
+    .about{display:grid; grid-template-columns:1.1fr .9fr; gap:24px}
+    .avatar{
+      border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.1); position:relative;
+      box-shadow:0 0 0 2px rgba(0,229,255,.25), 0 0 40px rgba(0,229,255,.15);
+    }
+    .avatar img{width:100%; display:block; filter:saturate(1.1)}
+    .avatar::after{content:""; position:absolute; inset:0; border-radius:18px; box-shadow:inset 0 0 60px rgba(0,229,255,.15); pointer-events:none}
+
+    /* SKILLS */
+    .skills{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px}
+    .skill{
+      display:flex; align-items:center; gap:14px; padding:16px; border-radius:16px; border:1px solid rgba(255,255,255,.1);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      transition:.25s; position:relative; overflow:hidden
+    }
+    .skill:hover{transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,229,255,.12)}
+    .skill i{font-size:32px}
+    .badge{margin-left:auto; font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.15); color:#aee7ff}
+
+    /* PROJECTS */
+    .projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px}
+    .card{border:1px solid rgba(255,255,255,.1); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border-radius:18px; overflow:hidden; position:relative}
+    .thumb{height:160px; background:linear-gradient(135deg, rgba(0,229,255,.15), rgba(162,119,255,.15)); display:grid; place-items:center; font-family:'JetBrains Mono', monospace}
+    .card h3{margin:16px 16px 6px}
+    .card p{margin:0 16px 14px; color:var(--muted)}
+    .card .links{display:flex; gap:10px; padding:0 16px 16px}
+    .btn{display:inline-flex; gap:8px; align-items:center; padding:10px 12px; border-radius:12px; text-decoration:none; color:var(--text); border:1px solid rgba(255,255,255,.12)}
+    .btn:hover{box-shadow:0 0 20px rgba(0,229,255,.25)}
+
+    /* TIMELINE */
+    .timeline{position:relative; margin-left:10px}
+    .timeline::before{content:""; position:absolute; left:14px; top:0; bottom:0; width:2px; background:linear-gradient(var(--primary), transparent)}
+    .tl-item{position:relative; padding-left:46px; margin:20px 0}
+    .dot{position:absolute; left:5px; top:6px; width:18px; height:18px; border-radius:50%; background:var(--primary); box-shadow:var(--glow)}
+
+    /* CONTACTO */
+    form{display:grid; gap:12px}
+    input, textarea{background:#0d1117; border:1px solid rgba(255,255,255,.12); color:var(--text); padding:12px 14px; border-radius:12px; font-family:inherit}
+    textarea{min-height:120px; resize:vertical}
+    .send{background:linear-gradient(90deg, var(--primary), var(--purple)); border:none; color:#0b0f14; font-weight:800}
+
+    /* FOOTER */
+    footer{padding:60px 20px; text-align:center; color:var(--muted)}
+
+    /* RESPONSIVE */
+    @media (max-width:900px){ .about{grid-template-columns:1fr} }
+  </style>
+  
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">Cristian <span>lucas</span></div>
+      <div class="spacer"></div>
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#contacto" class="cta">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="inicio" class="hero">
+    <canvas id="matrix"></canvas>
+    <h1 class="title" data-aos="zoom-in">
+      <span class="glow">Ciberseguridad</span> & Desarrollo Web
+      <div id="type" style="font-family:'JetBrains Mono', monospace; font-size:clamp(16px,2.2vw,22px); margin-top:12px;"></div>
+    </h1>
+    <p class="subtitle" data-aos="fade-up" data-aos-delay="200">Estudiante de Estadística e Informática — 2 años de proyectos reales. Software libre, análisis de datos y seguridad ofensiva.</p>
+    <div class="kpis" data-aos="fade-up" data-aos-delay="300">
+      <div class="chip">Huacho, Perú</div>
+      <div class="chip">Universidad Nacional José Faustino Sánchez Carrión</div>
+      <a class="chip" href="#contacto">Disponible para colaboraciones</a>
+    </div>
+
+    <!-- Logos flotantes -->
+    <div class="logo-cloud" aria-hidden="true">
+      <i class="floating devicon-python-plain float" style="left:6%; top:18%"></i>
+      <i class="floating devicon-javascript-plain spin" style="right:8%; top:24%"></i>
+      <i class="floating devicon-react-original float" style="left:20%; bottom:16%"></i>
+      <i class="floating devicon-java-plain spin" style="right:18%; bottom:18%"></i>
+      <i class="floating devicon-cplusplus-plain float" style="left:48%; top:12%"></i>
+      <i class="floating devicon-linux-plain spin" style="left:74%; top:10%"></i>
+      <i class="floating devicon-git-plain float" style="left:8%; bottom:10%"></i>
+      <i class="floating devicon-HTML5-plain" style="right:6%; top:54%"></i>
+    </div>
+  </main>
+<section id="sobre-mi">
+  <div class="panel about" data-aos="fade-up">
+    <div>
+      <h2>Sobre mí</h2>
+      <p class="lead">
+        Soy Cristian David Quispe Lucas, profesional en formación con 2 años de experiencia práctica en 
+        <strong>desarrollo web</strong> y <strong>ciberseguridad</strong>. Me apasiona el software libre, 
+        el análisis de datos y construir soluciones seguras y escalables.
+      </p>
+
+      <ul>
+        <li>📍 Huacho, Perú</li>
+        <li>🎓 Universidad Nacional José Faustino Sánchez Carrión</li>
+        <li>💼 Intereses: Pentesting, Frontend moderno, Automatización con Python</li>
+      </ul>
+
+      <!-- Nueva sección de habilidades -->
+      <h3>⚡ Habilidades principales</h3>
+      <ul>
+        <li>Desarrollo web: HTML, CSS, JavaScript</li>
+        <li>Seguridad informática: Kali Linux, herramientas de pentesting</li>
+        <li>Lenguajes: Python (básico-intermedio), SQL</li>
+        <li>Control de versiones con Git y GitHub</li>
+      </ul>
+
+      <!-- Objetivo profesional -->
+      <h3>🎯 Objetivo</h3>
+      <p>
+        Mi meta es crecer como especialista en <strong>ciberseguridad</strong> y 
+        <strong>desarrollo web moderno</strong>, aportando soluciones seguras, creativas y de impacto.
+      </p>
+
+      <!-- Botones de redes -->
+      <p>
+        <a class="btn" href="https://github.com/Cristian-code24" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.facebook.com/share/1CPaZyfGR1/" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn" href="https://www.tiktok.com/@cris_lucas19" target="_blank" rel="noopener">TikTok</a>
+      </p>
+
+      <!-- Logo de universidad pequeño -->
+      <div class="uni-logo" style="margin-top:15px;">
+        <img src="fotos/logouni.png" alt="UNJFSC" style="width:100px; height:auto;" />
+        <span style="font-size: 14px; display:block; margin-top:5px;">
+          Universidad Nacional José Faustino Sánchez Carrión
+        </span>
+      </div>
+    </div>
+
+    <div class="avatar" data-aos="zoom-in" data-aos-delay="100">
+      <img src="fotos/mifoto.jpg" alt="Cristian lucas" />
+    </div>
+  </div>
+</section>
+
+  <section id="habilidades">
+    <div class="panel" data-aos="fade-up">
+      <h2>Habilidades</h2>
+      <p class="lead">Stack técnico y herramientas que uso a diario.</p>
+      <div class="skills">
+        <div class="skill" data-aos="zoom-in"><i class="devicon-python-plain"></i> Python <span class="badge">Intermedio</span></div>
+        <div class="skill" data-aos="zoom-in" data-aos-delay="50"><i class="devicon-java-plain"></i> Java <span class="badge">Intermedio</span></div>
+        <div class="skill" data-aos="zoom-in" data-aos-delay="100"><i class="devicon-cplusplus-plain"></i> C++ <span class="badge">Intermedio</span></div>
+        <div class="skill" data-aos="zoom-in" data-aos-delay="150"><i class="devicon-javascript-plain"></i> JavaScript <span class="badge">Intermedio</span></div>
+        <div class="skill" data-aos="zoom-in" data-aos-delay="200"><i class="devicon-react-original"></i> React <span class="badge">Intermedio</span></div>
+        <div class="skill" data-aos="zoom-in" data-aos-delay="250"><i class="devicon-html5-plain"></i> HTML5 <span class="badge">Avanzado</span></div>
+        <div class="skill" data-aos="zoom-in" data-aos-delay="300"><i class="devicon-linux-plain"></i> Linux <span class="badge">Intermedio</span></div>
+        <div class="skill" data-aos="zoom-in" data-aos-delay="350"><i class="devicon-git-plain"></i> Git/GitHub <span class="badge">Intermedio</span></div>
+        <div class="skill" data-aos="zoom-in" data-aos-delay="400"><i class="devicon-raspberrypi-line"></i> Arduino/IoT <span class="badge">Base</span></div>
+        <div class="skill" data-aos="zoom-in" data-aos-delay="450"><i class="devicon-ubuntu-plain"></i> Kali/Linux Tools <span class="badge">Intermedio</span></div>
+      </div>
+    </div>
+  </section>
+<section id="proyectos">
+  <div class="panel" data-aos="fade-up">
+    <h2>Proyectos Destacados</h2>
+    <div class="projects">
+
+      <article class="card" data-aos="zoom-in">
+        <div class="thumb">ASLA GROUP — Web Corporativa</div>
+        <h3>Landing empresarial con animaciones</h3>
+        <p>UI moderna con efectos de desplazamiento, menú responsive y componentes reutilizables.</p>
+        <div class="links">
+          <a class="btn" href="https://aslagroup24.github.io/paginawep/" target="_blank">Ver demo</a>
+          <a class="btn" href="https://github.com/Cristian-code24" target="_blank">Código</a>
+        </div>
+      </article>
+
+      <article class="card" data-aos="zoom-in" data-aos-delay="60">
+        <div class="thumb">Laboratorios de Ciberseguridad</div>
+        <h3>Pentesting en entornos controlados</h3>
+        <p>Pruebas con Kali Linux, Burp Suite, Wireshark y Metasploit; documentación de hallazgos.</p>
+        <div class="links">
+          <a class="btn" href="https://latam.kaspersky.com/resource-center/definitions/what-is-cyber-security" target="_blank">Ver resumen</a>
+        </div>
+      </article>
+
+      <article class="card" data-aos="zoom-in" data-aos-delay="120">
+        <div class="thumb">Análisis de Datos</div>
+        <h3>R + SQL para insights</h3>
+        <p>Exploración de datos, visualización y reporte reproducible (Xaringan/Quarto).</p>
+        <div class="links">
+          <a class="btn" href="https://www.inei.gob.pe/media/ENEI/cursos_programados/modeloDifusionBIGDATA_v1.pdf" target="_blank">Demo</a>
+        </div>
+      </article>
+
+      <article class="card" data-aos="zoom-in" data-aos-delay="180">
+        <div class="thumb">IoT Invernadero</div>
+        <h3>Automatización con Arduino</h3>
+        <p>Control de variables ambientales y dashboard básico para monitoreo.</p>
+        <div class="links">
+          <a class="btn" href="https://www.youtube.com/watch?v=cOibyb2wwQg" target="_blank">Video</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+  <section id="experiencia">
+    <div class="panel" data-aos="fade-up">
+      <h2>Experiencia y Formación</h2>
+      <div class="timeline">
+        <div class="tl-item" data-aos="fade-right">
+          <div class="dot"></div>
+          <h3>2025 — Actualidad · Universidad Nacional JFSC</h3>
+          <p class="lead">Estudiante de Estadística e Informática — enfoque en programación, seguridad y análisis de datos.</p>
+        </div>
+        <div class="tl-item" data-aos="fade-right" data-aos-delay="80">
+          <div class="dot"></div>
+          <h3>2023 — 2025 · Proyectos y práctica profesional</h3>
+          <p class="lead">Desarrollo web moderno, scripting en Python y laboratorios de ciberseguridad (pentesting en entornos controlados).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="panel" data-aos="fade-up">
+      <h2>Notas & Artículos</h2>
+      <p class="lead">Escritos breves para compartir lo que aprendo.</p>
+      <div class="projects">
+        <article class="card" data-aos="zoom-in">
+          <div class="thumb">Ciberseguridad</div>
+          <h3>Primeros pasos con Kali Linux</h3>
+          <p>Instalación, herramientas básicas y buenas prácticas en laboratorios.</p>
+        </article>
+        <article class="card" data-aos="zoom-in" data-aos-delay="80">
+          <div class="thumb">Frontend</div>
+          <h3>Animaciones que suman (sin saturar)</h3>
+          <p>Cómo combinar AOS, Anime.js y CSS para una UI con carácter.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="panel" data-aos="fade-up">
+      <h2>Contacto</h2>
+      <p class="lead">¿Tienes una idea o proyecto? Conversemos.</p>
+      <form name="contact">
+        <input name="name" placeholder="Nombre" required />
+        <input type="email" name="email" placeholder="Correo" required />
+        <textarea name="message" placeholder="Tu mensaje"></textarea>
+        <button class="btn send" type="submit">Enviar mensaje</button>
+      </form>
+      <p style="margin-top:10px">O escríbeme en redes:
+        <a class="btn" href="https://github.com/Cristian-code24" target="_blank">GitHub</a>
+        <a class="btn" href="https://www.facebook.com/share/1CPaZyfGR1/" target="_blank">Facebook</a>
+        <a class="btn" href="https://www.tiktok.com/@cris_lucas19" target="_blank">TikTok</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:14px">© 2025 Cristian Quispe — Ciberseguridad & Desarrollo Web</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script>
+    // AOS init
+    AOS.init({ once:false, duration:800, easing:'ease-out-cubic' });
+
+    // Typewriter / texto dinámico
+    const phrases = [
+      'Pentesting en entornos controlados',
+      'Frontend moderno con React',
+      'Automatización con Python',
+      'Análisis de datos con R + SQL'
+    ];
+    let idx=0, el=document.getElementById('type');
+    function typeLoop(){
+      const text = phrases[idx%phrases.length];
+      let i=0; el.textContent='';
+      const wr = setInterval(()=>{
+        el.textContent = text.slice(0, ++i) + '▌';
+        if(i===text.length){ clearInterval(wr); setTimeout(()=>erase(text),1000); }
+      }, 40);
+    }
+    function erase(text){
+      let i=text.length; const er = setInterval(()=>{
+        el.textContent = text.slice(0, --i) + '▌';
+        if(i<=0){ clearInterval(er); idx++; setTimeout(typeLoop, 300); }
+      }, 20);
+    }
+    typeLoop();
+
+    // Fondo Matrix Canvas
+    const canvas=document.getElementById('matrix');
+    const ctx=canvas.getContext('2d');
+    let w,h,cols,chars;
+    function resize(){
+      w=canvas.width=window.innerWidth; h=canvas.height=document.querySelector('.hero').offsetHeight;
+      const fontSize=14; cols=Math.floor(w/fontSize); chars=Array(cols).fill(0);
+      ctx.font=fontSize+'px JetBrains Mono';
+    }
+    window.addEventListener('resize', resize); resize();
+    function draw(){
+      ctx.fillStyle='rgba(10,11,15,0.25)'; ctx.fillRect(0,0,w,h);
+      ctx.fillStyle='#00e5ff';
+      chars.forEach((y, i)=>{
+        const text=String.fromCharCode(0x30A0 + Math.random()*96);
+        const x=i*14; ctx.fillText(text, x, y);
+        chars[i] = y>h + Math.random()*200 ? 0 : y + 16;
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    // Hover neon para links
+    document.querySelectorAll('.btn, .nav a').forEach(a=>{
+      a.addEventListener('mousemove', e=>{
+        a.style.boxShadow = '0 0 20px rgba(0,229,255,.35)';
+      });
+      a.addEventListener('mouseleave', ()=>{
+        a.style.boxShadow = 'none';
+      });
+    });
+
+    // Form (demo)
+    document.forms.contact.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      alert('Gracias por tu mensaje. Me pondré en contacto pronto.');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
