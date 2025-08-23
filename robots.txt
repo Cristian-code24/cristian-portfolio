@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cristian-code24.github.io/cristian-portfolio/sitemap.xml
