@@ -1,0 +1,22 @@
+{
+  "name": "Portafolio de Cristian Lucas",
+  "short_name": "Cristian Lucas",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "description": "Portafolio de Cristian David Quispe Lucas — Ciberseguridad y Desarrollo Web.",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "icon-192.png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "icon-512.png"
+    }
+  ]
+}
