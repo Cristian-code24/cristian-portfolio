@@ -21,7 +21,7 @@ Aquí encontrarás mis proyectos, habilidades y un poco sobre mi trayectoria en 
 ---
 
 ## 🔗 Demo en línea
-👉 Puedes ver mi portafolio aquí: [Mi página web](https://cristian-code24.github.io/Mi-primera-p-gina-web/)  
+👉 Puedes ver mi portafolio aquí: [Mi página web](https://cristian-code24.github.io/cristian-portfolio/)  
 
 ---
 
