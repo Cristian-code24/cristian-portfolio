@@ -35,4 +35,4 @@ Aquí encontrarás mis proyectos, habilidades y un poco sobre mi trayectoria en 
 
 ## 🧑‍💻 Autor
 **Cristian David Quispe Lucas**  
-19 años — Estudiante de **Estadística e Informática** en la UNJFSC, apasionado por la tecnología, el hacking ético y el desarrollo web.
+20 años — Estudiante de **Estadística e Informática** en la UNJFSC, apasionado por la tecnología, el hacking ético y el desarrollo web.
