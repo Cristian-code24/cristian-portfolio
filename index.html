@@ -55,18 +55,40 @@
   
   <!-- AOS (scroll animations) -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
- <!-- Iconos para favicon y PWA -->
- <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
- <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
- <link rel="apple-touch-icon" href="icon-192.png">
+  
+  <!-- Iconos para favicon y PWA -->
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
 
- <!-- Manifest para apps web progresivas -->
- <link rel="manifest" href="manifest.json">
- <meta name="theme-color" content="#0d1117">
+  <!-- Manifest para apps web progresivas -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d1117">
 
   <!-- Estilos principales -->
   <link rel="stylesheet" href="estyle.css">
-</head>
+
+  <!-- ESTILOS PERSONALIZADOS PARA EL BOTÓN DEL CV -->
+  <style>
+    /* Estilo específico para el botón de CV */
+    .btn-cv {
+      background-color: #007bff !important; /* Azul brillante */
+      color: #ffffff !important;            /* Texto blanco */
+      border: 1px solid #0056b3 !important;
+      font-weight: 700 !important;          /* Texto en negrita */
+      text-decoration: none !important;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra suave */
+      transition: all 0.3s ease;
+    }
+
+    /* Efecto al pasar el mouse (hover) */
+    .btn-cv:hover {
+      background-color: #ffffff !important; /* Fondo blanco */
+      color: #007bff !important;            /* Texto azul */
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.6); /* Resplandor azul */
+      transform: translateY(-2px);
+    }
+  </style>
 
 </head>
 <body>
@@ -92,8 +114,9 @@
     <p class="subtitle" data-aos="fade-up" data-aos-delay="200">Estudiante de Estadística e Informática — 2 años de proyectos reales. Software libre, análisis de datos y seguridad ofensiva.</p>
     <div class="kpis" data-aos="fade-up" data-aos-delay="300">
       <div class="chip">Huacho, Perú</div>
-      <div class="chip">Universidad  Nacional José Faustino Sánchez Carrión</div>
-      <a class="chip" href="#contacto">Disponible para colaboraciones</a>
+      <div class="chip">Universidad Nacional José Faustino Sánchez Carrión</div>
+      <!-- Enlace directo al CV en el Hero con la nueva clase .btn-cv -->
+      <a class="chip btn-cv" href="cv.cristian-luacas.pdf" target="_blank">Descargar CV (PDF)</a>
     </div>
 
     <!-- Logos flotantes -->
@@ -108,59 +131,60 @@
       <i class="floating devicon-HTML5-plain" style="right:6%; top:54%"></i>
     </div>
   </main>
-<section id="sobre-mi">
-  <div class="panel about" data-aos="fade-up">
-    <div>
-      <h2>Sobre mí</h2>
-      <p class="lead">
-        Soy Cristian David Quispe Lucas, profesional en formación con 2 años de experiencia práctica en 
-         <strong>desarrollo web</strong> y <strong>ciberseguridad</strong>. Me apasiona el hacking,etico 
-        el análisis de datos y construir soluciones seguras y escalables.
-      </p>
 
-      <ul>
-        <li>📍 Huacho, Perú</li>
-        <li>🎓 Universidad Nacional José Faustino Sánchez Carrión</li>
-        <li>💼 Intereses: Pentesting, Frontend moderno, Automatización con Python</li>
-      </ul>
+  <section id="sobre-mi">
+    <div class="panel about" data-aos="fade-up">
+      <div>
+        <h2>Sobre mí</h2>
+        <p class="lead">
+          Soy Cristian David Quispe Lucas, profesional en formación con 2 años de experiencia práctica en 
+          <strong>desarrollo web</strong> y <strong>ciberseguridad</strong>. Me apasiona el hacking ético, 
+          el análisis de datos y construir soluciones seguras y escalables.
+        </p>
 
-      <!-- Nueva sección de habilidades -->
-      <h3>⚡ Habilidades principales</h3>
-      <ul>
-        <li>Desarrollo web: HTML, CSS, JavaScript</li>
-        <li>Seguridad informática: Kali Linux, herramientas de pentesting</li>
-        <li>Lenguajes: Python (básico-intermedio), SQL</li>
-        <li>Control de versiones con Git y GitHub</li>
-      </ul>
+        <ul>
+          <li>📍 Huacho, Perú</li>
+          <li>🎓 Universidad Nacional José Faustino Sánchez Carrión</li>
+          <li>💼 Intereses: Pentesting, Frontend moderno, Automatización con Python</li>
+        </ul>
 
-      <!-- Objetivo profesional -->
-      <h3>🎯 Objetivo</h3>
-      <p>
-        Mi meta es crecer como especialista en <strong>ciberseguridad</strong> y 
-        <strong>desarrollo web moderno</strong>, aportando soluciones seguras, creativas y de impacto.
-      </p>
+        <h3>⚡ Habilidades principales</h3>
+        <ul>
+          <li>Desarrollo web: HTML, CSS, JavaScript</li>
+          <li>Seguridad informática: Kali Linux, herramientas de pentesting</li>
+          <li>Lenguajes: Python (básico-intermedio), SQL</li>
+          <li>Control de versiones con Git y GitHub</li>
+        </ul>
 
-      <!-- Botones de redes -->
-      <p>
-        <a class="btn" href="https://github.com/Cristian-code24" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.facebook.com/share/1CPaZyfGR1/" target="_blank" rel="noopener">Facebook</a>
-        <a class="btn" href="https://www.tiktok.com/@cris_lucas19" target="_blank" rel="noopener">TikTok</a>
-      </p>
+        <h3>🎯 Objetivo</h3>
+        <p>
+          Mi meta es crecer como especialista en <strong>ciberseguridad</strong> y 
+          <strong>desarrollo web moderno</strong>, aportando soluciones seguras, creativas y de impacto.
+        </p>
 
-      <!-- Logo de universidad pequeño -->
-      <div class="uni-logo" style="margin-top:15px;">
-        <img src="fotos/logouni.png" alt="UNJFSC" style="width:100px; height:auto;" />
-        <span style="font-size: 14px; display:block; margin-top:5px;">
-          Universidad Nacional José Faustino Sánchez Carrión
-        </span>
+        <!-- Botones de redes y CV -->
+        <p>
+          <!-- BOTÓN DE CV AÑADIDO AQUÍ con la clase .btn-cv -->
+          <a class="btn btn-cv" href="cv.cristian-luacas.pdf" target="_blank">📄 Descargar CV</a>
+          <a class="btn" href="https://github.com/Cristian-code24" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.facebook.com/share/1CPaZyfGR1/" target="_blank" rel="noopener">Facebook</a>
+          <a class="btn" href="https://www.tiktok.com/@cris_lucas19" target="_blank" rel="noopener">TikTok</a>
+        </p>
+
+        <!-- Logo de universidad pequeño -->
+        <div class="uni-logo" style="margin-top:15px;">
+          <img src="fotos/logouni.png" alt="UNJFSC" style="width:100px; height:auto;" />
+          <span style="font-size: 14px; display:block; margin-top:5px;">
+            Universidad Nacional José Faustino Sánchez Carrión
+          </span>
+        </div>
+      </div>
+
+      <div class="avatar" data-aos="zoom-in" data-aos-delay="100">
+        <img src="fotos/mifoto.jpg" alt="Cristian lucas" />
       </div>
     </div>
-
-    <div class="avatar" data-aos="zoom-in" data-aos-delay="100">
-      <img src="fotos/mifoto.jpg" alt="Cristian lucas" />
-    </div>
-  </div>
-</section>
+  </section>
 
   <section id="habilidades">
     <div class="panel" data-aos="fade-up">
@@ -180,51 +204,52 @@
       </div>
     </div>
   </section>
-<section id="proyectos">
-  <div class="panel" data-aos="fade-up">
-    <h2>Proyectos Destacados</h2>
-    <div class="projects">
 
-      <article class="card" data-aos="zoom-in">
-        <div class="thumb">ASLA GROUP — Web Corporativa</div>
-        <h3>Landing empresarial con animaciones</h3>
-        <p>UI moderna con efectos de desplazamiento, menú responsive y componentes reutilizables.</p>
-        <div class="links">
-          <a class="btn" href="https://aslagroup24.github.io/paginawep/" target="_blank">Ver wep</a>
-          <a class="btn" href="https://github.com/Cristian-code24" target="_blank">Código</a>
-        </div>
-      </article>
+  <section id="proyectos">
+    <div class="panel" data-aos="fade-up">
+      <h2>Proyectos Destacados</h2>
+      <div class="projects">
 
-      <article class="card" data-aos="zoom-in" data-aos-delay="60">
-        <div class="thumb">Laboratorios de Ciberseguridad</div>
-        <h3>Pentesting en entornos controlados</h3>
-        <p>Pruebas con Kali Linux, Burp Suite, Wireshark y Metasploit; documentación de hallazgos.</p>
-        <div class="links">
-          <a class="btn" href="https://latam.kaspersky.com/resource-center/definitions/what-is-cyber-security" target="_blank">Ver resumen</a>
-        </div>
-      </article>
+        <article class="card" data-aos="zoom-in">
+          <div class="thumb">ASLA GROUP — Web Corporativa</div>
+          <h3>Landing empresarial con animaciones</h3>
+          <p>UI moderna con efectos de desplazamiento, menú responsive y componentes reutilizables.</p>
+          <div class="links">
+            <a class="btn" href="https://aslagroup24.github.io/paginawep/" target="_blank">Ver web</a>
+            <a class="btn" href="https://github.com/Cristian-code24" target="_blank">Código</a>
+          </div>
+        </article>
 
-      <article class="card" data-aos="zoom-in" data-aos-delay="120">
-        <div class="thumb">Análisis de Datos</div>
-        <h3>R + SQL para insights</h3>
-        <p>Exploración de datos, visualización y reporte reproducible (Xaringan/Quarto).</p>
-        <div class="links">
-          <a class="btn" href="https://www.inei.gob.pe/media/ENEI/cursos_programados/modeloDifusionBIGDATA_v1.pdf" target="_blank">Demo</a>
-        </div>
-      </article>
+        <article class="card" data-aos="zoom-in" data-aos-delay="60">
+          <div class="thumb">Laboratorios de Ciberseguridad</div>
+          <h3>Pentesting en entornos controlados</h3>
+          <p>Pruebas con Kali Linux, Burp Suite, Wireshark y Metasploit; documentación de hallazgos.</p>
+          <div class="links">
+            <a class="btn" href="https://latam.kaspersky.com/resource-center/definitions/what-is-cyber-security" target="_blank">Ver resumen</a>
+          </div>
+        </article>
 
-      <article class="card" data-aos="zoom-in" data-aos-delay="180">
-        <div class="thumb">IoT Invernadero</div>
-        <h3>Automatización con Arduino</h3>
-        <p>Control de variables ambientales y dashboard básico para monitoreo.</p>
-        <div class="links">
-          <a class="btn" href="https://www.youtube.com/watch?v=cOibyb2wwQg" target="_blank">Video</a>
-        </div>
-      </article>
+        <article class="card" data-aos="zoom-in" data-aos-delay="120">
+          <div class="thumb">Análisis de Datos</div>
+          <h3>R + SQL para insights</h3>
+          <p>Exploración de datos, visualización y reporte reproducible (Xaringan/Quarto).</p>
+          <div class="links">
+            <a class="btn" href="https://www.inei.gob.pe/media/ENEI/cursos_programados/modeloDifusionBIGDATA_v1.pdf" target="_blank">Demo</a>
+          </div>
+        </article>
 
+        <article class="card" data-aos="zoom-in" data-aos-delay="180">
+          <div class="thumb">IoT Invernadero</div>
+          <h3>Automatización con Arduino</h3>
+          <p>Control de variables ambientales y dashboard básico para monitoreo.</p>
+          <div class="links">
+            <a class="btn" href="https://www.youtube.com/watch?v=cOibyb2wwQg" target="_blank">Video</a>
+          </div>
+        </article>
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section id="experiencia">
     <div class="panel" data-aos="fade-up">
@@ -273,26 +298,28 @@
         <textarea name="message" placeholder="Tu mensaje"></textarea>
         <button class="btn send" type="submit">Enviar mensaje</button>
       </form>
-      <p style="margin-top:10px">O escríbeme en redes:
+      <p style="margin-top:20px">O también puedes:
+        <br><br>
+        <!-- BOTÓN DE CV AÑADIDO AQUÍ con la clase .btn-cv -->
+        <a class="btn btn-cv" href="mi-cv.pdf" target="_blank">📄 Descargar mi CV</a>
         <a class="btn" href="https://github.com/Cristian-code24" target="_blank">GitHub</a>
         <a class="btn" href="https://www.facebook.com/share/1CPaZyfGR1/" target="_blank">Facebook</a>
-        <a class="btn" href="https://www.tiktok.com/@cris_lucas19" target="_blank">TikTok</a>
       </p>
     </div>
-</section>
+  </section>
 
-<footer>
-  <div style="font-family:'JetBrains Mono', monospace; font-size:14px">
-    © 2025 Cristian lucas — Ciberseguridad & Desarrollo Web
-  </div>
-</footer>
+  <footer>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:14px">
+      © 2025 Cristian lucas — Ciberseguridad & Desarrollo Web
+    </div>
+  </footer>
 
-<!-- Librerías externas -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <!-- Librerías externas -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
-<!-- Tu JS externo -->
-<script src="script.js" defer></script>
+  <!-- Tu JS externo -->
+  <script src="script.js" defer></script>
 
 </body>
 </html>
