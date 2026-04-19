@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /config/
+
+Sitemap: https://cristian-portfolio-lilac.vercel.app/sitemap.xml
