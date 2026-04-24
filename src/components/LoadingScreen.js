@@ -1,97 +1,113 @@
-import React, { useState, useEffect, useRef } from 'react';
-
-const LINES = [
-  { delay: 300,  text: '> booting crislinux v3.7.1 ...' },
-  { delay: 600,  text: '[  OK  ] Loading kernel modules' },
-  { delay: 400,  text: '[  OK  ] Mounting filesystems' },
-  { delay: 500,  text: '[  OK  ] Starting network manager' },
-  { delay: 350,  text: '[  OK  ] Initializing firewall rules' },
-  { delay: 450,  text: '[  OK  ] Loading pentesting toolkit' },
-  { delay: 300,  text: '[  OK  ] Starting security daemon' },
-  { delay: 600,  text: '> system ready.' },
-  { delay: 400,  text: '> welcome, cristian.' },
-  { delay: 500,  text: '> launching portfolio...' },
-];
+import React, { useState, useEffect } from 'react';
 
 export default function LoadingScreen({ onFinish }) {
-  const [lines, setLines] = useState([]);
-  const [done, setDone] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [status, setStatus] = useState('ESTABLECIENDO CONEXIÓN...');
   const [fadeOut, setFadeOut] = useState(false);
-  const idx = useRef(0);
 
   useEffect(() => {
-    function addLine() {
-      if (idx.current >= LINES.length) {
-        setTimeout(() => setFadeOut(true), 400);
-        setTimeout(() => { setDone(true); onFinish(); }, 1200);
-        return;
-      }
-      const line = LINES[idx.current];
-      setLines(prev => [...prev, line.text]);
-      idx.current++;
-      setTimeout(addLine, line.delay);
-    }
-    const t = setTimeout(addLine, 500);
-    return () => clearTimeout(t);
-  }, [onFinish]);
+    let p = 0;
+    const interval = setInterval(() => {
+      p += Math.floor(Math.random() * 15) + 5;
+      if (p > 100) p = 100;
+      setProgress(p);
 
-  if (done) return null;
+      if (p > 20 && p < 50) setStatus('AUTENTICANDO CREDENCIALES...');
+      else if (p >= 50 && p < 85) setStatus('CARGANDO MÓDULOS DE SEGURIDAD...');
+      else if (p >= 85 && p < 100) setStatus('SISTEMA NEX-PULSE EN LÍNEA.');
+
+      if (p === 100) {
+        clearInterval(interval);
+        setTimeout(() => setFadeOut(true), 500);
+        setTimeout(() => onFinish(), 1300);
+      }
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, [onFinish]);
 
   return (
     <div className={`ls ${fadeOut ? 'ls--out' : ''}`}>
-      <div className="ls__inner">
-        <div className="ls__header">
-          <span className="ls__dot ls__dot--r"></span>
-          <span className="ls__dot ls__dot--y"></span>
-          <span className="ls__dot ls__dot--g"></span>
-          <span className="ls__title">crislinux — terminal</span>
+      <div className="ls__center">
+        {/* Pulsing Logo */}
+        <div className="ls__logo-box">
+          <svg className="ls__logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" stroke="var(--cyan)" strokeWidth="2" strokeDasharray="10 5" className="ls__spin" />
+            <circle cx="50" cy="50" r="35" stroke="var(--purple)" strokeWidth="1.5" opacity="0.6" />
+            <path d="M50 25 L75 65 L25 65 Z" stroke="var(--emerald)" strokeWidth="2" className="ls__pulse-path" />
+            <circle cx="50" cy="55" r="5" fill="var(--cyan)" className="ls__pulse-core" />
+          </svg>
+          <div className="ls__glow"></div>
         </div>
-        <div className="ls__body">
-          {lines.map((l, i) => (
-            <div key={i} className="ls__line">
-              <span className={l.startsWith('>') ? 'ls__cmd' : l.includes('OK') ? 'ls__ok' : ''}>
-                {l}
-              </span>
-            </div>
-          ))}
-          <span className="ls__cursor">█</span>
+
+        {/* Text & Bar */}
+        <h2 className="ls__title">CRISTIAN LUCAS</h2>
+        <div className="ls__subtitle">DATA & SECURITY ARCHITECT</div>
+        
+        <div className="ls__bar-wrap">
+          <div className="ls__bar-fill" style={{ width: `${progress}%` }}></div>
+        </div>
+        
+        <div className="ls__status">
+          <span>{status}</span>
+          <span className="ls__pct">{progress}%</span>
         </div>
       </div>
 
       <style>{`
         .ls {
           position: fixed; inset: 0; z-index: 9999;
-          background: #000; display: flex; align-items: center; justify-content: center;
-          transition: opacity .8s ease; opacity: 1;
+          background: #030305; display: flex; align-items: center; justify-content: center;
+          transition: opacity .8s var(--ease), visibility .8s; opacity: 1; visibility: visible;
         }
-        .ls--out { opacity: 0; pointer-events: none; }
-        .ls__inner {
-          width: 90%; max-width: 600px;
-          background: #0a0a0f; border: 1px solid rgba(0,229,255,.15);
-          border-radius: 14px; overflow: hidden;
-          box-shadow: 0 0 60px rgba(0,229,255,.08);
+        .ls--out { opacity: 0; visibility: hidden; pointer-events: none; }
+        
+        .ls__center {
+          display: flex; flex-direction: column; align-items: center;
+          width: 100%; max-width: 400px; padding: 0 24px;
         }
-        .ls__header {
-          display: flex; align-items: center; gap: 8px;
-          padding: 12px 16px; background: rgba(255,255,255,.03);
-          border-bottom: 1px solid rgba(255,255,255,.06);
+
+        .ls__logo-box { position: relative; width: 110px; height: 110px; margin-bottom: 30px; }
+        .ls__logo { width: 100%; height: 100%; position: relative; z-index: 2; }
+        .ls__glow {
+          position: absolute; inset: 10px; border-radius: 50%;
+          background: var(--cyan); filter: blur(35px); opacity: 0.3; z-index: 1;
+          animation: pulseGlow 2s infinite alternate;
         }
-        .ls__dot { width: 10px; height: 10px; border-radius: 50%; }
-        .ls__dot--r { background: #ef4444; }
-        .ls__dot--y { background: #f59e0b; }
-        .ls__dot--g { background: #10b981; }
-        .ls__title { margin-left: 8px; font-family: var(--mono); font-size: .72rem; color: #555; }
-        .ls__body {
-          padding: 20px; font-family: var(--mono); font-size: .82rem;
-          min-height: 280px; line-height: 1.9;
+
+        .ls__spin { transform-origin: center; animation: spin 8s linear infinite; }
+        .ls__pulse-path { animation: draw 2s ease-in-out infinite alternate; }
+        .ls__pulse-core { animation: pulseGlow 1s infinite alternate; }
+
+        .ls__title {
+          font-size: 1.4rem; font-weight: 800; letter-spacing: 4px;
+          color: #fff; margin-bottom: 4px; text-align: center;
         }
-        .ls__line { animation: lineIn .3s ease forwards; opacity: 0; }
-        .ls__cmd { color: #00e5ff; }
-        .ls__ok { color: #10b981; }
-        .ls__line span:not(.ls__cmd):not(.ls__ok) { color: #888; }
-        .ls__cursor { color: #00e5ff; animation: blink 1s step-end infinite; }
-        @keyframes lineIn { to { opacity: 1; } }
-        @keyframes blink { 50% { opacity: 0; } }
+        .ls__subtitle {
+          font-family: var(--mono); font-size: .65rem; font-weight: 600;
+          color: var(--cyan); letter-spacing: 3px; margin-bottom: 40px; text-align: center;
+        }
+
+        .ls__bar-wrap {
+          width: 100%; height: 2px; background: rgba(255,255,255,.05);
+          position: relative; overflow: hidden; margin-bottom: 12px;
+        }
+        .ls__bar-fill {
+          position: absolute; left: 0; top: 0; height: 100%;
+          background: linear-gradient(90deg, transparent, var(--cyan), var(--purple));
+          box-shadow: 0 0 10px var(--cyan);
+          transition: width .2s ease-out;
+        }
+
+        .ls__status {
+          width: 100%; display: flex; justify-content: space-between;
+          font-family: var(--mono); font-size: .6rem; color: var(--t3); letter-spacing: 1px;
+        }
+        .ls__pct { color: var(--cyan); font-weight: 700; }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes draw { 0% { stroke-dasharray: 0 200; } 100% { stroke-dasharray: 200 0; } }
+        @keyframes pulseGlow { 0% { opacity: 0.3; transform: scale(0.95); } 100% { opacity: 0.8; transform: scale(1.05); } }
       `}</style>
     </div>
   );
