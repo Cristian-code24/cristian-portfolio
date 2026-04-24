@@ -56,7 +56,7 @@ export default function Hero() {
             <div className="h__st-d" />
             <div className="h__st"><span className="h__st-n">+20</span><span className="h__st-l">Proyectos</span></div>
             <div className="h__st-d" />
-            <div className="h__st"><span className="h__st-n">{yr - 2004}</span><span className="h__st-l">Años</span></div>
+            <div className="h__st"><span className="h__st-n">{yr - 2006}</span><span className="h__st-l">Años</span></div>
           </div>
         </div>
 
@@ -191,8 +191,22 @@ export default function Hero() {
           .h__title{font-size:2.3rem}.h__desc{margin:0 auto 28px}
           .h__btns{justify-content:center}.h__stats{justify-content:center}
           .h__flip{width:260px;height:370px}
+          .h__txt{animation:mobSlideUp .8s .3s var(--ease) both}
+          .h__card-w{animation:mobScaleIn .7s var(--ease) both}
+          .h__badge{animation:mobFadeRight .6s .5s var(--ease) both}
+          .h__stats{animation:mobFadeUp .7s .7s var(--ease) both}
         }
-        @media(max-width:480px){.h__title{font-size:1.8rem}.h__stats{gap:14px}.h__st-n{font-size:1.2rem}.h__flip{width:240px;height:350px}}
+        @media(max-width:480px){
+          .h__title{font-size:1.8rem}.h__stats{gap:14px}.h__st-n{font-size:1.2rem}
+          .h__flip{width:240px;height:350px;animation:mobFloat 4s ease-in-out infinite}
+          .h__btns{flex-direction:column;width:100%}
+          .h__btn{width:100%;justify-content:center}
+        }
+        @keyframes mobSlideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes mobScaleIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+        @keyframes mobFadeRight{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes mobFadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes mobFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
       `}</style>
     </section>
   );

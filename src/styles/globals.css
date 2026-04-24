@@ -73,4 +73,28 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(max-width:768px){
   .sec{padding:70px 16px}
   .sec-h{font-size:1.9rem}
+
+  /* Faster, snappier reveals on mobile */
+  .rv{transform:translateY(25px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+
+  /* Staggered section labels slide from left */
+  .sec-label{animation:mobSlideRight .6s .1s var(--ease) both}
+
+  /* Glowing divider pulses on mobile */
+  .glow-line{animation:mobGlowPulse 3s ease-in-out infinite}
+
+  /* Glass cards get a subtle entrance */
+  .glass{animation:mobGlassIn .6s var(--ease) both}
 }
+
+@media(max-width:480px){
+  .sec{padding:55px 12px}
+  .sec-h{font-size:1.6rem}
+  .sec-p{font-size:.9rem}
+  .sec-label{font-size:.68rem;letter-spacing:2px}
+}
+
+/* ── Mobile Keyframes ── */
+@keyframes mobSlideRight{from{opacity:0;transform:translateX(-25px)}to{opacity:1;transform:translateX(0)}}
+@keyframes mobGlowPulse{0%,100%{box-shadow:0 0 12px var(--cyan-g);opacity:.8}50%{box-shadow:0 0 25px var(--cyan-g),0 0 40px var(--purple-g);opacity:1}}
+@keyframes mobGlassIn{from{opacity:0;transform:scale(.95) translateY(15px)}to{opacity:1;transform:scale(1) translateY(0)}}

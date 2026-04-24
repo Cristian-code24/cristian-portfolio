@@ -115,7 +115,24 @@ export default function Projects() {
         .pj__link--ac{color:var(--ac);border-color:color-mix(in srgb,var(--ac) 22%,transparent)}
         .pj__link--ac:hover{border-color:var(--ac);background:color-mix(in srgb,var(--ac) 8%,transparent);box-shadow:0 0 12px color-mix(in srgb,var(--ac) 12%,transparent)}
         @media(max-width:1024px){.pj__grid{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:640px){.pj__grid{grid-template-columns:1fr}}
+        @media(max-width:640px){
+          .pj__grid{grid-template-columns:1fr;gap:18px}
+          .pj__card{animation:mobCardIn .5s var(--ease) both}
+          .pj__card:nth-child(odd){animation-name:mobCardLeft}
+          .pj__card:nth-child(even){animation-name:mobCardRight}
+          .pj__card:nth-child(1){animation-delay:.05s}
+          .pj__card:nth-child(2){animation-delay:.1s}
+          .pj__card:nth-child(3){animation-delay:.15s}
+          .pj__card:nth-child(4){animation-delay:.2s}
+          .pj__card:nth-child(5){animation-delay:.25s}
+          .pj__card:nth-child(6){animation-delay:.3s}
+          .pj__card:active{transform:scale(.98)!important;transition:transform .15s}
+          .pj__preview{height:120px}
+          .pj__links{flex-wrap:wrap}
+          .pj__link{flex:1;justify-content:center}
+        }
+        @keyframes mobCardLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes mobCardRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
       `}</style>
     </section>
   );
